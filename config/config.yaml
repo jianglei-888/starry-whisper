@@ -1,0 +1,25 @@
+# AI陪伴助手配置
+
+# LLM 配置
+llm:
+  model: "mimo-v2.5-pro"
+  temperature: 0.8
+  max_tokens: 800
+
+# 记忆配置
+memory:
+  history_limit: 20          # 每次对话取最近 N 条消息
+  summary_threshold: 3       # 消息超过 N 条时生成摘要
+  summary_max_words: 200     # 摘要最大字数
+  memory_context_count: 5    # 注入上下文的摘要数量
+
+# FastAPI 配置
+api:
+  host: "127.0.0.1"
+  port: 8765
+
+# 窗口配置
+window:
+  width: 420
+  height: 700
+  title: "星夜私语 · 我在"

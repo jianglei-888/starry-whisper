@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星夜私语 · 我在</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- 主聊天界面 -->
+    <div id="app">
+        <!-- 顶部栏 -->
+        <header id="header">
+            <div class="header-left">
+                <div class="avatar-container" id="companionAvatar">
+                    <img id="avatarImg" src="/avatar/default_avatar.svg" alt="头像">
+                </div>
+                <div class="header-info">
+                    <h1 id="companionName">小伴</h1>
+                    <span class="status">在线</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="historyBtn" class="icon-btn" title="历史会话">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </button>
+                <button id="newChatBtn" class="icon-btn" title="新对话">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                    </svg>
+                </button>
+                <button id="settingsBtn" class="icon-btn" title="设置">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.32 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- 聊天消息区 -->
+        <main id="messages">
+            <div class="welcome-msg" id="welcomeSection">
+                <p id="welcomeText">嗨，这么晚了还没睡呀？有什么想聊的吗</p>
+            </div>
+            <div class="quick-replies" id="quickReplies">
+                <button class="quick-reply-btn" data-msg="心情不太好">心情不太好</button>
+                <button class="quick-reply-btn" data-msg="睡不着">睡不着</button>
+                <button class="quick-reply-btn" data-msg="想找人聊聊">想找人聊聊</button>
+                <button class="quick-reply-btn" data-msg="今天好累">今天好累</button>
+            </div>
+        </main>
+
+        <!-- 输入区 -->
+        <footer id="inputArea">
+            <div class="input-wrapper">
+                <textarea id="messageInput" placeholder="说点什么..." rows="1"></textarea>
+                <button id="sendBtn" class="send-btn" title="发送">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 设置面板（侧滑） -->
+    <div id="settingsOverlay" class="overlay hidden"></div>
+    <div id="settingsPanel" class="settings-panel hidden">
+        <div class="settings-header">
+            <h2>设置</h2>
+            <button id="closeSettings" class="icon-btn">&times;</button>
+        </div>
+
+        <div class="settings-content">
+            <!-- 陪伴者昵称 -->
+            <section class="settings-section">
+                <label>陪伴者昵称</label>
+                <input type="text" id="nicknameInput" placeholder="小伴" maxlength="10">
+            </section>
+
+            <!-- 头像上传 -->
+            <section class="settings-section">
+                <label>头像</label>
+                <div class="avatar-upload">
+                    <div class="avatar-preview" id="avatarPreview">
+                        <img id="avatarPreviewImg" src="/avatar/default_avatar.svg" alt="头像预览">
+                    </div>
+                    <input type="file" id="avatarFile" accept="image/*" hidden>
+                    <button id="uploadAvatarBtn" class="secondary-btn">更换头像</button>
+                </div>
+            </section>
+
+            <!-- 风格选择 -->
+            <section class="settings-section">
+                <label>陪伴风格</label>
+                <div class="style-grid" id="styleGrid">
+                    <!-- 由 JS 动态生成 -->
+                </div>
+            </section>
+
+            <!-- 自定义人设 -->
+            <section class="settings-section" id="customSection" style="display:none;">
+                <label>选择风格模板（点击快速填入）</label>
+                <div class="template-cards" id="templateCards"></div>
+
+                <div class="custom-guide">
+                    <div class="guide-field">
+                        <label>ta 性格怎样？（可多选，用于自动生成描述）</label>
+                        <div class="tag-grid" id="personalityTags"></div>
+                    </div>
+                </div>
+
+                <label>人设描述（自动生成，可修改）</label>
+                <textarea id="customPersonality" placeholder="选择模板或选性格标签自动生成..." rows="4"></textarea>
+            </section>
+
+            <!-- 记忆管理 -->
+            <section class="settings-section">
+                <label>记忆管理</label>
+                <button id="clearMemoryBtn" class="danger-btn">清除所有聊天记录</button>
+            </section>
+
+            <!-- 保存 -->
+            <button id="saveSettingsBtn" class="primary-btn">保存设置</button>
+        </div>
+    </div>
+
+    <!-- 历史会话面板 -->
+    <div id="historyOverlay" class="overlay hidden"></div>
+    <div id="historyPanel" class="settings-panel hidden">
+        <div class="settings-header">
+            <h2>历史会话</h2>
+            <button id="closeHistory" class="icon-btn">&times;</button>
+        </div>
+        <div class="history-list" id="historyList">
+            <!-- 由 JS 动态生成 -->
+        </div>
+    </div>
+
+    <!-- Toast 通知 -->
+    <div id="toast" class="toast"></div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
