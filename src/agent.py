@@ -15,8 +15,8 @@ def get_client() -> OpenAI:
     global _client
     if _client is None:
         _client = OpenAI(
-            api_key=os.getenv("OPENAI_API_KEY"),
-            base_url=os.getenv("OPENAI_API_BASE"),
+            api_key=os.getenv("LLM_API_KEY"),
+            base_url=os.getenv("LLM_BASE_URL"),
         )
     return _client
 

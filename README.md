@@ -21,7 +21,7 @@ pip install -r requirements.txt
 
 ### 2. 配置 API Key
 
-复制 `.env.example` 为 `.env`，填入你的 API Key：
+复制 `.env.example` 为 `.env`，填入你的 MIMO API Key：
 
 ```bash
 cp .env.example .env
@@ -29,8 +29,9 @@ cp .env.example .env
 
 编辑 `.env`：
 ```
-OPENAI_API_KEY=你的API密钥
-OPENAI_API_BASE=你的BASE_URL
+LLM_API_KEY=sk-你的API密钥
+LLM_BASE_URL=你的BASE_URL
+LLM_MODEL=模型
 ```
 
 ### 3. 启动
