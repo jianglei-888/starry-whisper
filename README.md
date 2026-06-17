@@ -21,7 +21,7 @@ pip install -r requirements.txt
 
 ### 2. 配置 API Key
 
-复制 `.env.example` 为 `.env`，填入你的 MIMO API Key：
+复制 `.env.example` 为 `.env`，填入你的 API Key：
 
 ```bash
 cp .env.example .env
