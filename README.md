@@ -21,7 +21,7 @@ pip install -r requirements.txt
 
 ### 2. 配置 API Key
 
-复制 `.env.example` 为 `.env`，填入你的 MIMO API Key：
+复制 `.env.example` 为 `.env`，填入你的 API Key：
 
 ```bash
 cp .env.example .env
@@ -30,7 +30,7 @@ cp .env.example .env
 编辑 `.env`：
 ```
 OPENAI_API_KEY=你的API密钥
-OPENAI_API_BASE=https://token-plan-cn.xiaomimimo.com/v1
+OPENAI_API_BASE=你的BASE_URL
 ```
 
 ### 3. 启动
